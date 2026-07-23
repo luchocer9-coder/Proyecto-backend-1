@@ -1,0 +1,27 @@
+<h1>Productos disponibles</h1>
+
+<div id="products-container" class="products-grid">
+  {{#each products}}
+    <div class="product-card" data-id="{{this._id}}">
+      <h3>{{this.title}}</h3>
+      <p class="category">{{this.category}}</p>
+      <p class="price">${{this.price}}</p>
+      <p class="stock">Stock: {{this.stock}}</p>
+      <a href="/products/{{this._id}}" class="btn">Ver detalle</a>
+    </div>
+  {{else}}
+    <p>No hay productos cargados todavía.</p>
+  {{/each}}
+</div>
+
+<div class="pagination">
+  {{#if hasPrevPage}}
+    <a href="/products?page={{prevPage}}" class="btn">← Anterior</a>
+  {{/if}}
+  <span>Página {{page}} de {{totalPages}}</span>
+  {{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}" class="btn">Siguiente →</a>
+  {{/if}}
+</div>
+
+<script src="/js/realTimeProducts.js"></script>
